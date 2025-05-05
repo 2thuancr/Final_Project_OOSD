@@ -55,6 +55,9 @@
     <Compile Include="Services\DonHangService.cs" />
     <Compile Include="Services\GioHangService.cs" />
     <Compile Include="Services\SanPhamService.cs" />
+    <Compile Include="UI\DonHangUI.cs" />
+    <Compile Include="UI\GioHangUI.cs" />
+    <Compile Include="UI\SanPhamUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

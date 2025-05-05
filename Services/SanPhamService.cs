@@ -55,6 +55,29 @@ namespace Services
                 Console.WriteLine($"Thương hiệu : {sp.thuongHieu}");
             }
         }
+        public void KiemTraTonKho(int maSP, int soLuongYeuCau)
+        {
+            var sp = GetSanPhamById(maSP);
+
+            if (sp == null)
+            {
+                Console.WriteLine("Không tìm thấy sản phẩm với mã đã nhập.");
+            }
+            else
+            {
+                Console.WriteLine($"\nSản phẩm: {sp.tenSanPham}");
+                Console.WriteLine($"Tồn kho hiện tại: {sp.soLuong}");
+
+                if (sp.soLuong >= soLuongYeuCau)
+                {
+                    Console.WriteLine($"✅ Đủ hàng để đáp ứng số lượng yêu cầu: {soLuongYeuCau}.");
+                }
+                else
+                {
+                    Console.WriteLine($"❌ Không đủ hàng. Chỉ còn {sp.soLuong}, yêu cầu {soLuongYeuCau}.");
+                }
+            }
+        }
 
 
         private List<SanPham> danhSachSanPham = new List<SanPham>

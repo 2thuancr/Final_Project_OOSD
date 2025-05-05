@@ -1,5 +1,6 @@
 ﻿using System;
 using Services;
+using UI;
 
 class Program
 {
@@ -7,19 +8,24 @@ class Program
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
+        // Khởi tạo các service
         var sanPhamService = new SanPhamService();
         var donHangService = new DonHangService();
         var gioHangService = new GioHangService(sanPhamService, donHangService);
+
+        // Khởi tạo các UI tương ứng
+        var sanPhamUI = new SanPhamUI(sanPhamService);
+        var gioHangUI = new GioHangUI(gioHangService);
+        var donHangUI = new DonHangUI(donHangService);
 
         bool running = true;
         while (running)
         {
             Console.Clear();
             Console.WriteLine("=== ỨNG DỤNG QUẢN LÝ BÁN HÀNG ===");
-            Console.WriteLine("1. Tìm kiếm sản phẩm");
-            Console.WriteLine("2. Xem lịch sử đơn hàng");
-            Console.WriteLine("3. Đặt hàng");
-            Console.WriteLine("4. Xem chi tiết sản phẩm");
+            Console.WriteLine("1. Quản lý sản phẩm");
+            Console.WriteLine("2. Quản lý giỏ hàng");
+            Console.WriteLine("3. Quản lý đơn hàng");
             Console.WriteLine("0. Thoát");
             Console.Write("Chọn chức năng: ");
             string choice = Console.ReadLine();
@@ -27,16 +33,13 @@ class Program
             switch (choice)
             {
                 case "1":
-                    sanPhamService.TimKiemSanPham();
+                    sanPhamUI.HienThiMenu();
                     break;
                 case "2":
-                    donHangService.XemLichSuDonHang();
+                    gioHangUI.HienThiMenu();
                     break;
                 case "3":
-                    gioHangService.DatHang();
-                    break;
-                case "4":
-                    sanPhamService.XemChiTietSanPham();
+                    donHangUI.HienThiMenu();
                     break;
                 case "0":
                     running = false;
